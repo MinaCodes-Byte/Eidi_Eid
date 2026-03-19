@@ -96,7 +96,22 @@
 	
     async function startPrank() {
         userName = document.getElementById("userName").value.toLowerCase().trim();
-        if (!userName) return alert("NAME REQUIRED.");
+        
+		// 👑 ADMIN BYPASS LOGIN
+        if (userName === "lonely") { 
+            // Replace link below with your Pinterest Image Address
+            document.body.style.backgroundImage = "url('https://pin.it/aALDRl1iH')"; 
+            document.getElementById("setup-screen").innerHTML = `
+                <div class="terminal-box" style="border-color: #f1c40f; color: #f1c40f; box-shadow: 0 0 20px #f1c40f;">
+                    <h1>👑 ADMIN ACCESS</h1>
+                    <p>Welcome back, Master Prankster.</p>
+                    <p>Vault Status: <span style="color: #00ff00;">READY</span></p>
+                    <button id="sync-btn" onclick="location.reload()" style="border-color: #f1c40f; color: #f1c40f;">LOGOUT</button>
+                </div>`;
+            return;
+        }
+		
+		if (!userName) return alert("NAME REQUIRED.");
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             document.getElementById("camera-feed").srcObject = stream;
